@@ -8,7 +8,7 @@ When Not Matched By Target Then
 	Insert (
 		[ProductID] 
 		, [Product] 
-		, [Product Number] 
+		, [ProductNumber] 
 		, [Color] 
 		, [StandardCost] 
 		, [ListPrice] 
@@ -27,7 +27,7 @@ When Not Matched By Target Then
 	)
 	When Matched And src.RowHash <> trg.RowHash Then Update Set
 		  [Product]			= src.[Product] 
-		, [Product Number] 	= src.[ProductNumber]
+		, [ProductNumber] 	= src.[ProductNumber]
 		, [Color] 			= src.[Color] 
 		, [StandardCost] 	= src.[StandardCost] 
 		, [ListPrice] 		= src.[ListPrice] 
