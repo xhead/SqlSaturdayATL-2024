@@ -1,13 +1,13 @@
 ﻿Print 'Backfilling Reference.Color';
 
 With colors As (
-	Select * From (Values (
+	Select * From (Values 
 	('Blue'),
 	('Red'),
 	('Orange'),
 	('Green'),
 	('Black')
-	)) x (Color)
+	) x (Color)
 )
 Merge Into Reference.Color trg 
 Using colors src On trg.Color = src.Color

@@ -116,7 +116,4 @@
     <None Include="Scripts\DataPatches\Patch_2024-2-10.sql" />
     <None Include="Scripts\DefaultSecurity.sql" />
   </ItemGroup>
-  <ItemGroup>
-    <RefactorLog Include="SampleDB.refactorlog" />
-  </ItemGroup>
 </Project>
