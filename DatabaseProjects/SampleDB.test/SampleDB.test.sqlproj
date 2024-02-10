@@ -3,16 +3,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <Name>SampleDB</Name>
+    <Name>SampleDB.test</Name>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
-    <ProjectGuid>{b339c9f2-c328-4f42-bc6c-2bdfd43e4415}</ProjectGuid>
+    <ProjectGuid>{99f44b7b-9b50-4a28-b774-32d151aa4474}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.Sql150DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
-    <RootNamespace>SampleDB</RootNamespace>
-    <AssemblyName>SampleDB</AssemblyName>
+    <RootNamespace>SampleDB.test</RootNamespace>
+    <AssemblyName>SampleDB.test</AssemblyName>
     <ModelCollation>1033, CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
@@ -22,8 +22,6 @@
     <SqlServerVerification>False</SqlServerVerification>
     <IncludeCompositeObjects>True</IncludeCompositeObjects>
     <TargetDatabaseSet>True</TargetDatabaseSet>
-    <ValidateCasingOnIdentifiers>False</ValidateCasingOnIdentifiers>
-    <QueryStoreDesiredState>ReadOnly</QueryStoreDesiredState>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -59,49 +57,26 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
-    <Folder Include="Staging\" />
-    <Folder Include="Staging\Tables\" />
-    <Folder Include="raw\" />
-    <Folder Include="raw\Tables\" />
-    <Folder Include="ETL\" />
-    <Folder Include="ETL\Tables\" />
-    <Folder Include="dw\" />
-    <Folder Include="dw\Tables\" />
-    <Folder Include="Staging\Views\" />
-    <Folder Include="Security\" />
-    <Folder Include="Staging\Stored Procedures\" />
-    <Folder Include="ETL\Stored Procedures\" />
-    <Folder Include="Scripts" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Staging\Tables\Product.sql" />
-    <Build Include="raw\Tables\Project.sql" />
-    <Build Include="raw\Tables\Department.sql" />
-    <Build Include="ETL\Tables\DataFactoryTask.sql" />
-    <Build Include="dw\Tables\Department.sql" />
-    <Build Include="dw\Tables\Product.sql" />
-    <Build Include="dw\Tables\Project.sql" />
-    <Build Include="Staging\Views\Project.sql" />
-    <Build Include="Staging\Views\Department.sql" />
-    <Build Include="Security\adf-metadatadriven-dev.sql" />
-    <Build Include="Staging\Stored Procedures\MergeProject.sql" />
-    <Build Include="Staging\Stored Procedures\MergeDepartment.sql" />
-    <Build Include="Staging\Stored Procedures\MergeProduct.sql" />
-    <Build Include="ETL\Stored Procedures\GetDataFactoryTasks.sql" />
-    <Build Include="Security\Staging.sql" />
-    <Build Include="Security\raw.sql" />
-    <Build Include="Security\ETL.sql" />
-    <Build Include="Security\dw.sql" />
-    <Build Include="Staging\Tables\Sales.sql" />
-    <Build Include="dw\Tables\Sales.sql" />
-    <Build Include="Staging\Stored Procedures\MergeSales.sql" />
+    <ProjectReference Include="..\tsqlt_base\tsqlt_base.sqlproj">
+      <Name>tsqlt_base</Name>
+      <Project>{29663eb0-962a-4e7a-a43a-4f39b7adf99e}</Project>
+      <Private>True</Private>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+    </ProjectReference>
+    <ProjectReference Include="..\SampleDB\SampleDB.sqlproj">
+      <Name>SampleDB</Name>
+      <Project>{b339c9f2-c328-4f42-bc6c-2bdfd43e4415}</Project>
+      <Private>True</Private>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <PostDeploy Include="Scripts\Script.PostDeployment.sql" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Scripts\BackfillFactoryTasks.sql" />
-    <None Include="CompareToDevscmp.scmp" />
-    <None Include="SampleDB.publish.xml" />
+    <ArtifactReference Include="$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\150\SqlSchemas\master.dacpac">
+      <HintPath>$(DacPacRootPath)\Extensions\Microsoft\SQLDB\Extensions\SqlServer\150\SqlSchemas\master.dacpac</HintPath>
+      <SuppressMissingDependenciesErrors>False</SuppressMissingDependenciesErrors>
+      <DatabaseVariableLiteralValue>master</DatabaseVariableLiteralValue>
+    </ArtifactReference>
   </ItemGroup>
 </Project>
