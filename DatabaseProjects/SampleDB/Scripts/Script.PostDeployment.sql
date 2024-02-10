@@ -9,10 +9,11 @@ Post-Deployment Script Template
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
-
 Go
-
 :r .\BackfillFactoryTasks.sql
-
+Go
+:r .\BackfillReferenceData.sql
+Go
+:r .\Datapatches\Patch_2024-2-10.sql
 Go
 
