@@ -1,3 +1,3 @@
 ﻿CREATE SCHEMA [raw]
-    AUTHORIZATION [adf-metadatadriven-dev];
+    AUTHORIZATION [dbo];
 

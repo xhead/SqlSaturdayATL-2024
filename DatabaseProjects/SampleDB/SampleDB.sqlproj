@@ -7,7 +7,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{b339c9f2-c328-4f42-bc6c-2bdfd43e4415}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.SqlAzureV12DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql150DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -16,7 +16,7 @@
     <ModelCollation>1033, CI</ModelCollation>
     <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
     <DeployToDatabase>True</DeployToDatabase>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <TargetLanguage>CS</TargetLanguage>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <SqlServerVerification>False</SqlServerVerification>
@@ -24,6 +24,7 @@
     <TargetDatabaseSet>True</TargetDatabaseSet>
     <ValidateCasingOnIdentifiers>False</ValidateCasingOnIdentifiers>
     <QueryStoreDesiredState>ReadOnly</QueryStoreDesiredState>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -71,6 +72,11 @@
     <Folder Include="Staging\Stored Procedures\" />
     <Folder Include="ETL\Stored Procedures\" />
     <Folder Include="Scripts" />
+    <Folder Include="Scripts\DataPatches" />
+    <Folder Include="Control" />
+    <Folder Include="Control\Tables" />
+    <Folder Include="Reference" />
+    <Folder Include="Reference\Tables" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Staging\Tables\Product.sql" />
@@ -82,7 +88,6 @@
     <Build Include="dw\Tables\Project.sql" />
     <Build Include="Staging\Views\Project.sql" />
     <Build Include="Staging\Views\Department.sql" />
-    <Build Include="Security\adf-metadatadriven-dev.sql" />
     <Build Include="Staging\Stored Procedures\MergeProject.sql" />
     <Build Include="Staging\Stored Procedures\MergeDepartment.sql" />
     <Build Include="Staging\Stored Procedures\MergeProduct.sql" />
@@ -94,6 +99,12 @@
     <Build Include="Staging\Tables\Sales.sql" />
     <Build Include="dw\Tables\Sales.sql" />
     <Build Include="Staging\Stored Procedures\MergeSales.sql" />
+    <Build Include="Control\Tables\ChangeTracking.sql" />
+    <Build Include="Security\Control.sql" />
+    <Build Include="Security\SampleRole.sql" />
+    <None Include="Scripts\BackfillReferenceData.sql" />
+    <Build Include="Reference\Tables\Color.sql" />
+    <Build Include="Security\Reference.sql" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Scripts\Script.PostDeployment.sql" />
@@ -102,5 +113,7 @@
     <None Include="Scripts\BackfillFactoryTasks.sql" />
     <None Include="CompareToDevscmp.scmp" />
     <None Include="SampleDB.publish.xml" />
+    <None Include="Scripts\DataPatches\Patch_2024-2-10.sql" />
+    <None Include="Scripts\DefaultSecurity.sql" />
   </ItemGroup>
 </Project>

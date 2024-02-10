@@ -1,5 +1,2 @@
 ﻿CREATE SCHEMA [Staging]
-    AUTHORIZATION [adf-metadatadriven-dev];
-
-
-
+    AUTHORIZATION [dbo];
