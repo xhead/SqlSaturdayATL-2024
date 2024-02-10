@@ -56,6 +56,11 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="Integration\" />
+    <Folder Include="Integration\Views\" />
+    <Folder Include="Security\" />
+    <Folder Include="Production\" />
+    <Folder Include="Production\Synonyms\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AdventureWorks\AdventureWorks.sqlproj">
@@ -71,5 +76,14 @@
       <DefaultValue>AdventureWorks</DefaultValue>
       <Value>$(SqlCmdVar__1)</Value>
     </SqlCmdVariable>
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Integration\Views\Product.sql" />
+    <Build Include="Security\Production.sql" />
+    <Build Include="Security\Integration.sql" />
+    <Build Include="Production\Synonyms\ProductSubcategory.sql" />
+    <Build Include="Production\Synonyms\ProductModel.sql" />
+    <Build Include="Production\Synonyms\ProductCategory.sql" />
+    <Build Include="Production\Synonyms\Product.sql" />
   </ItemGroup>
 </Project>
